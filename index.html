@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ovy styles — Made to Measure</title>
+<meta name="description" content="Custom fashion design and tailoring — made-to-measure clothing, bespoke orders, and fitting bookings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0A0C;
+    --charcoal:#141416;
+    --charcoal-2:#1E1E22;
+    --bone:#FFFFFF;
+    --bone-dim:rgba(255,255,255,0.7);
+    --bone-faint:rgba(255,255,255,0.35);
+    --brass:#E11D48;
+    --brass-bright:#F43F5E;
+    --wine:#881337;
+    --display:'Fraunces', serif;
+    --body-font:'Work Sans', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+    --maxw:1180px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--bone);
+    font-family:var(--body-font);
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ margin:0; padding:0; list-style:none; }
+  h1,h2,h3{ font-family:var(--display); margin:0; font-weight:600; color:var(--bone); }
+  p{ margin:0; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  :focus-visible{ outline:2px solid var(--brass-bright); outline-offset:3px; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+  .eyebrow{
+    font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--brass-bright); display:inline-block; margin-bottom:14px;
+  }
+  .section{ padding:96px 0; }
+  .section-head{ max-width:640px; margin-bottom:52px; }
+  .section-head h2{ font-size:clamp(1.7rem, 3.4vw, 2.6rem); line-height:1.15; }
+  .section-head .lede{ margin-top:14px; color:var(--bone-dim); font-size:1.02rem; max-width:540px; }
+
+  .seam{
+    height:10px;
+    background-image:radial-gradient(circle, var(--brass) 1.6px, transparent 1.7px);
+    background-size:16px 10px;
+    background-repeat:repeat-x;
+    background-position:center;
+    opacity:0.5;
+  }
+
+  /* ---------- nav ---------- */
+  header.site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,10,12,0.92); backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(225,29,72,0.22);
+  }
+  .nav-row{ display:flex; align-items:center; justify-content:space-between; padding:18px 0; }
+  .brand{ font-family:var(--display); font-weight:600; font-size:1.15rem; letter-spacing:0.02em; }
+  .nav-links{ display:flex; gap:30px; align-items:center; }
+  .nav-links a{ font-size:0.92rem; color:var(--bone-dim); }
+  .nav-links a:hover{ color:var(--brass-bright); }
+  .nav-cta{
+    font-family:var(--mono); font-size:0.8rem; letter-spacing:0.04em;
+    border:1px solid var(--brass); color:var(--brass-bright); padding:8px 16px; border-radius:2px;
+  }
+  .nav-cta:hover{ background:var(--brass); color:#FFFFFF; }
+  .nav-toggle{ display:none; background:none; border:none; color:var(--bone); font-size:1.5rem; }
+
+  @media (max-width:860px){
+    .nav-links{
+      position:fixed; inset:64px 0 auto 0; background:var(--ink);
+      flex-direction:column; align-items:flex-start; gap:0;
+      border-bottom:1px solid rgba(225,29,72,0.22);
+      transform:translateY(-120%); transition:transform 0.28s ease;
+    }
+    .nav-links.open{ transform:translateY(0); }
+    .nav-links a, .nav-links .nav-cta{ width:100%; padding:16px 28px; border-bottom:1px solid rgba(255,255,255,0.06); }
+    .nav-cta{ border:none; }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:88px 0 60px; }
+  .hero h1{ font-size:clamp(2.3rem, 6vw, 4.4rem); line-height:1.05; max-width:820px; }
+  .hero .lede{ margin-top:22px; color:var(--bone-dim); font-size:1.08rem; max-width:480px; }
+  .hero-ctas{ margin-top:34px; display:flex; gap:16px; flex-wrap:wrap; }
+
+  .btn{ font-family:var(--mono); font-size:0.82rem; letter-spacing:0.03em; padding:14px 24px; border-radius:2px; display:inline-flex; align-items:center; gap:10px; border:1px solid transparent; transition:transform 0.15s ease, background 0.15s ease; }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-primary{ background:var(--brass); color:#FFFFFF; }
+  .btn-primary:hover{ background:var(--brass-bright); }
+  .btn-secondary{ border-color:var(--brass); color:var(--brass-bright); }
+  .btn-secondary:hover{ background:rgba(225,29,72,0.12); }
+
+  .tape{ margin-top:56px; display:flex; align-items:flex-end; gap:0; height:34px; border-bottom:1px solid rgba(225,29,72,0.4); }
+  .tape span{ flex:1; text-align:left; font-family:var(--mono); font-size:0.66rem; color:var(--bone-faint); border-left:1px solid rgba(225,29,72,0.4); padding-left:6px; height:100%; display:flex; align-items:flex-end; padding-bottom:4px; }
+  .tape span:first-child{ border-left:none; }
+
+  /* ---------- about ---------- */
+  .about-grid{ display:grid; grid-template-columns:200px 1fr; gap:48px; align-items:start; }
+  .about-grid .tag{ font-family:var(--mono); font-size:0.72rem; color:var(--brass-bright); border:1px solid var(--brass); display:inline-block; padding:6px 12px; border-radius:2px; }
+  .about-grid p{ color:var(--bone-dim); font-size:1.02rem; max-width:620px; }
+  @media (max-width:700px){ .about-grid{ grid-template-columns:1fr; gap:20px; } }
+
+  /* ---------- designs gallery ---------- */
+  .designs-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media (max-width:900px){ .designs-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .designs-grid{ grid-template-columns:1fr; } }
+
+  .design-card{
+    position:relative; aspect-ratio:3/4; border-radius:3px; overflow:hidden;
+    background:var(--charcoal-2);
+    border:1px solid rgba(225,29,72,0.25);
+  }
+  .design-card img.card-img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;
+  }
+
+  /* ---------- services ---------- */
+  .services-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(225,29,72,0.22); border:1px solid rgba(225,29,72,0.22); }
+  @media (max-width:700px){ .services-grid{ grid-template-columns:1fr; } }
+  .service-item{ background:var(--charcoal); padding:30px; }
+  .service-item h3{ font-size:1.08rem; font-weight:600; }
+  .service-item p{ margin-top:8px; color:var(--bone-dim); font-size:0.94rem; }
+
+  /* ---------- order process ---------- */
+  .steps{ display:flex; gap:0; }
+  @media (max-width:800px){ .steps{ flex-direction:column; gap:28px; } }
+  .step{ flex:1; padding:0 24px; border-left:1px solid rgba(225,29,72,0.3); }
+  .step:first-child{ border-left:none; padding-left:0; }
+  @media (max-width:800px){ .step{ border-left:none; padding-left:0; border-top:1px solid rgba(225,29,72,0.3); padding-top:20px; } .step:first-child{ border-top:none; padding-top:0; } }
+  .step .num{ font-family:var(--mono); color:var(--brass-bright); font-size:0.85rem; }
+  .step h3{ font-size:1.05rem; margin-top:10px; }
+  .step p{ margin-top:8px; color:var(--bone-dim); font-size:0.92rem; }
+  .order-cta{ margin-top:44px; }
+
+  /* ---------- booking ---------- */
+  .booking-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+  @media (max-width:800px){ .booking-wrap{ grid-template-columns:1fr; gap:30px; } }
+  form.booking{ display:flex; flex-direction:column; gap:14px; }
+  .field label{ font-family:var(--mono); font-size:0.72rem; letter-spacing:0.05em; color:var(--bone-dim); text-transform:uppercase; display:block; margin-bottom:6px; }
+  .field input, .field select, .field textarea{
+    width:100%; background:var(--charcoal); border:1px solid rgba(225,29,72,0.35); color:var(--bone);
+    padding:12px 14px; border-radius:2px; font-family:var(--body-font); font-size:0.96rem;
+  }
+  .field textarea{ min-height:90px; resize:vertical; }
+  .field input::placeholder, .field textarea::placeholder{ color:var(--bone-faint); }
+  .booking-note{ margin-top:14px; font-size:0.82rem; color:var(--bone-faint); }
+  .booking-side .lede{ color:var(--bone-dim); font-size:0.98rem; }
+
+  /* ---------- connect ---------- */
+  .connect-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:22px; }
+  .connect-card{
+    background:var(--charcoal); border:1px solid rgba(225,29,72,0.28); border-radius:3px;
+    padding:30px; display:flex; align-items:center; gap:18px; transition:border-color 0.15s ease, transform 0.15s ease;
+  }
+  .connect-card:hover{ border-color:var(--brass); transform:translateY(-2px); }
+  .connect-card svg{ flex-shrink:0; width:30px; height:30px; color:var(--brass-bright); }
+  .connect-card h3{ font-size:1.02rem; }
+  .connect-card p{ color:var(--bone-dim); font-size:0.88rem; margin-top:4px; }
+
+  /* ---------- footer ---------- */
+  footer{ padding:56px 0 40px; }
+  .footer-row{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px; align-items:flex-end; }
+  .footer-brand p{ color:var(--bone-faint); font-size:0.86rem; margin-top:6px; max-width:320px; }
+  .footer-links{ display:flex; gap:24px; flex-wrap:wrap; }
+  .footer-links a{ font-size:0.86rem; color:var(--bone-dim); }
+  .footer-links a:hover{ color:var(--brass-bright); }
+  .footer-copy{ margin-top:36px; font-family:var(--mono); font-size:0.72rem; color:var(--bone-faint); }
+
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; } }
+
+  .skip-link{ position:absolute; left:-999px; top:auto; background:var(--brass); color:#FFFFFF; padding:10px 16px; z-index:100; }
+  .skip-link:focus{ left:16px; top:16px; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-nav">
+  <div class="wrap nav-row">
+    <a href="#top" class="brand js-brand-name">Ovy styles</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#designs">Designs</a>
+      <a href="#services">Sewing &amp; Services</a>
+      <a href="#orders">Custom Orders</a>
+      <a href="#book">Book a Fitting</a>
+      <a href="#connect">Contact</a>
+      <a href="#" class="nav-cta js-whatsapp-link">Chat on WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <span class="eyebrow">Made to measure</span>
+      <h1>Your measurements. Your fabric. Your fit.</h1>
+      <p class="lede">Custom-designed, hand-sewn clothing — built around you, from the first sketch to the final fitting.</p>
+      <div class="hero-ctas">
+        <a href="#book" class="btn btn-primary">Book a Fitting</a>
+        <a href="#" class="btn btn-secondary js-whatsapp-link">Chat on WhatsApp</a>
+      </div>
+      <div class="tape" aria-hidden="true">
+        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="seam" aria-hidden="true"></div>
+
+  <!-- ABOUT -->
+  <section class="section reveal">
+    <div class="wrap about-grid">
+      <div><span class="tag">The designer</span></div>
+      <div>
+        <h2 style="font-size:1.6rem; margin-bottom:16px;">A little about the hands behind the stitches</h2>
+        <p>I design and sew every piece myself, from the first sketch to the final fitting. My focus is getting the fit exactly right — which is why every order starts with your measurements, not a size chart. Whether it's a single custom piece or a small batch for an event, you work directly with me at every stage.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="seam" aria-hidden="true"></div>
+
+  <!-- DESIGNS -->
+  <section class="section reveal" id="designs">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What I design</span>
+        <h2>A look at the kind of pieces I create</h2>
+        <p class="lede">Every garment is custom crafted and hand-sewn to your exact specifications.</p>
+      </div>
+      <div class="designs-grid" id="designsGrid"></div>
+    </div>
+  </section>
+
+  <div class="seam" aria-hidden="true"></div>
+
+  <!-- SERVICES -->
+  <section class="section reveal" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What I can sew</span>
+        <h2>If you can describe it, I can likely make it</h2>
+      </div>
+      <div class="services-grid" id="servicesGrid"></div>
+    </div>
+  </section>
+
+  <div class="seam" aria-hidden="true"></div>
+
+  <!-- ORDER PROCESS -->
+  <section class="section reveal" id="orders">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How ordering works</span>
+        <h2>From idea to finished piece, in four steps</h2>
+      </div>
+      <div class="steps" id="stepsRow"></div>
+      <div class="order-cta">
+        <a href="#" class="btn btn-primary js-whatsapp-order">Start an Order on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="seam" aria-hidden="true"></div>
+
+  <!-- BOOKING -->
+  <section class="section reveal" id="book">
+    <div class="wrap booking-wrap">
+      <div class="booking-side">
+        <span class="eyebrow">Book a fitting</span>
+        <h2 style="font-size:1.7rem; margin-bottom:14px;">Reserve a time, and I'll confirm on WhatsApp</h2>
+        <p class="lede">Fill this in and it opens WhatsApp with your details ready to send — nothing goes anywhere until you hit send there.</p>
+      </div>
+      <form class="booking" id="bookingForm">
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" required placeholder="Your full name">
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone / WhatsApp number</label>
+          <input id="f-phone" name="phone" required placeholder="Include your country code">
+        </div>
+        <div class="field">
+          <label for="f-date">Preferred date</label>
+          <input id="f-date" name="date" type="date" required>
+        </div>
+        <div class="field">
+          <label for="f-need">What you need</label>
+          <select id="f-need" name="need">
+            <option>Consultation</option>
+            <option>Measurement &amp; fitting</option>
+            <option>Pickup</option>
+            <option>Alteration</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-notes">Notes (fabric idea, occasion, sizing — anything helpful)</label>
+          <textarea id="f-notes" name="notes" placeholder="Optional"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:6px; align-self:flex-start;">Send Booking Request</button>
+        <p class="booking-note">Opens WhatsApp with your details filled in.</p>
+      </form>
+    </div>
+  </section>
+
+  <div class="seam" aria-hidden="true"></div>
+
+  <!-- CONNECT -->
+  <section class="section reveal" id="connect">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Find me online</span>
+        <h2>Fast ways to reach me</h2>
+      </div>
+      <div class="connect-grid">
+        <a class="connect-card js-instagram-link" href="https://www.instagram.com/ovy_styles?utm_source=qr" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none"/></svg>
+          <div>
+            <h3 class="js-instagram-handle-text">Instagram — @ovy_styles</h3>
+            <p>Follow along for new pieces and behind-the-scenes fittings.</p>
+          </div>
+        </a>
+        <a class="connect-card" href="https://www.tiktok.com/@ovy_styles" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          <div>
+            <h3>TikTok — @ovy_styles</h3>
+            <p>Watch short clips, custom fittings, and behind the scenes.</p>
+          </div>
+        </a>
+        <a class="connect-card js-whatsapp-link" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.3-3.9A7.9 7.9 0 1 1 9 18.6z"/><path d="M8.7 9.6c.3 1.6 1.6 3 3.2 3.4"/></svg>
+          <div>
+            <h3>WhatsApp</h3>
+            <p>+234 814 737 5506 — The fastest way to reach me directly.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <div class="brand js-brand-name">Ovy styles</div>
+        <p class="js-tagline-text">Made-to-measure clothing, cut and sewn by hand.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="#designs">Designs</a>
+        <a href="#services">Services</a>
+        <a href="#orders">Custom Orders</a>
+        <a href="#book">Book a Fitting</a>
+        <a href="#connect">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-copy">© <span id="year"></span> <span class="js-brand-name">Ovy styles</span>. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const CONFIG = {
+    businessName: "Ovy styles",
+    tagline: "Made-to-measure clothing, cut and sewn by hand.",
+    whatsappNumber: "2348147375506",
+    instagramHandle: "ovy_styles"
+  };
+
+  const DESIGNS = [
+    { img: "1000484982.jpg" },
+    { img: "1000484980.jpg" },
+    { img: "1000484983.jpg" },
+    { img: "1000484979.jpg" },
+    { img: "1000484981.jpg" },
+    { img: "1000484941.jpg" }
+  ];
+
+  const SERVICES = [
+    { name: "Custom Tailoring", desc: "Made-to-measure garments built from your chosen fabric and pattern." },
+    { name: "Alterations & Fit Adjustments", desc: "Resizing, hemming, and refitting pieces you already own." },
+    { name: "Wedding & Occasion Wear", desc: "Bespoke pieces for weddings, ceremonies, and special events." },
+    { name: "Everyday Wardrobe Pieces", desc: "Shirts, trousers, and dresses made to your exact fit." },
+    { name: "Uniform & Group Orders", desc: "Matching pieces for teams, schools, or events." }
+  ];
+
+  const ORDER_STEPS = [
+    { n: "01", title: "Tell me what you want", desc: "Share your style, fabric idea, and occasion." },
+    { n: "02", title: "We agree the details", desc: "Fabric, measurements, timeline, and price — confirmed together." },
+    { n: "03", title: "Fitting", desc: "I fit the piece to you in person and adjust anything that needs it." },
+    { n: "04", title: "Pickup or delivery", desc: "Your finished piece, ready to wear." }
+  ];
+
+  document.querySelectorAll('.js-brand-name').forEach(el => el.textContent = CONFIG.businessName);
+  document.querySelectorAll('.js-tagline-text').forEach(el => el.textContent = CONFIG.tagline);
+  document.title = `${CONFIG.businessName} — Made to Measure`;
+
+  function waLink(message){
+    return `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
+  }
+  document.querySelectorAll('.js-whatsapp-link').forEach(el => {
+    el.setAttribute('href', waLink(`Hi ${CONFIG.businessName}, I found your site and wanted to chat.`));
+    el.setAttribute('target', '_blank');
+    el.setAttribute('rel', 'noopener');
+  });
+  document.querySelectorAll('.js-whatsapp-order').forEach(el => {
+    el.setAttribute('href', waLink(`Hi ${CONFIG.businessName}, I'd like to start a custom order.`));
+    el.setAttribute('target', '_blank');
+    el.setAttribute('rel', 'noopener');
+  });
+
+  document.querySelectorAll('.js-instagram-link').forEach(el => {
+    el.setAttribute('href', `https://www.instagram.com/ovy_styles?utm_source=qr`);
+  });
+  document.querySelectorAll('.js-instagram-handle-text').forEach(el => {
+    el.textContent = `Instagram — @${CONFIG.instagramHandle}`;
+  });
+
+  // ---- render designs gallery ----
+  const designsGrid = document.getElementById('designsGrid');
+  DESIGNS.forEach(d => {
+    const card = document.createElement('div');
+    card.className = 'design-card';
+    card.innerHTML = `
+      ${d.img ? `<img src="${d.img}" alt="Design" class="card-img" onerror="this.style.display='none'">` : ''}
+    `;
+    designsGrid.appendChild(card);
+  });
+
+  // ---- render services ----
+  const servicesGrid = document.getElementById('servicesGrid');
+  SERVICES.forEach(s => {
+    const item = document.createElement('div');
+    item.className = 'service-item';
+    item.innerHTML = `<h3>${s.name}</h3><p>${s.desc}</p>`;
+    servicesGrid.appendChild(item);
+  });
+
+  // ---- render order steps ----
+  const stepsRow = document.getElementById('stepsRow');
+  ORDER_STEPS.forEach(s => {
+    const step = document.createElement('div');
+    step.className = 'step';
+    step.innerHTML = `<div class="num">${s.n}</div><h3>${s.title}</h3><p>${s.desc}</p>`;
+    stepsRow.appendChild(step);
+  });
+
+  // ---- mobile nav toggle ----
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+    navToggle.textContent = open ? '✕' : '☰';
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.textContent = '☰';
+  }));
+
+  // ---- booking form -> WhatsApp ----
+  document.getElementById('bookingForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const message = `Hi ${CONFIG.businessName}, I'd like to book a fitting.
+Name: ${fd.get('name')}
+Phone: ${fd.get('phone')}
+Preferred date: ${fd.get('date')}
+What I need: ${fd.get('need')}
+Notes: ${fd.get('notes') || '—'}`;
+    window.location.href = waLink(message);
+  });
+
+  // ---- scroll reveal ----
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
